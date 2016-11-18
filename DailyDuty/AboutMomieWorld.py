@@ -13,7 +13,7 @@ import common
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
-class aboutComic(unittest.TestCase):
+class aboutMomieWorld(unittest.TestCase):
     def setUp(self):
         desired_caps = Desired_Capabilities.startdevices()
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps )
@@ -80,7 +80,7 @@ class aboutComic(unittest.TestCase):
             print u'未检测出发表漫画赠送两魔豆'
 
         #点赞
-        self.driver.tap([(1003,1696),(1068,1731)],500)
+        self.driver.tap([(1003, 1696), (1068, 1731)], 500)
 
         try:
             common.wait_appear_by_id(self, "com.manboker.headportrait:id/item_controller_cachedimageview",3)
@@ -361,5 +361,5 @@ class aboutComic(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(aboutComic)
+    suite = unittest.TestLoader().loadTestsFromTestCase(aboutMomieWorld)
     unittest.TextTestRunner(verbosity=2).run(suite)
