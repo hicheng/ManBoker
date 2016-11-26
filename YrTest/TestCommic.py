@@ -5,10 +5,11 @@ from appium import webdriver
 import os
 import sys
 import time
-from time import sleep
+
 from selenium.webdriver.support.ui import WebDriverWait
 import unittest
 from PublicResour import common
+from DailyDuty import AppMethon
 
 
 
@@ -27,10 +28,18 @@ class TestYangRan(unittest.TestCase):
         page_close = self.driver.find_element_by_id("com.manboker.headportrait:id/news_page_close")
         page_close.click()
 
-        #进入做漫画界面
+        AppMethon.NormalLogin(self, "13215998390", "123456")
+
+        try:
+            home_page = WebDriverWait(self.driver, 4).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/set_set_goback"))
+            home_page.click()
+        except:
+            pass
+            # 进入做漫画界面
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
-
+        AppMethon.ShootBackgroundMethon(self)
+        '''
         # 等待收藏图标加载出来后截图
         WebDriverWait(self.driver, 30).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/comic_praise_iv"))
         self.driver.get_screenshot_as_file("C:\Pycharm\ManBoker\YrTest\Screenshot")
@@ -49,22 +58,28 @@ class TestYangRan(unittest.TestCase):
         set_goback = self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback")
         set_goback.click()
         set_goback.click()
-
+        '''
         #向左滑动
         for i in range(1, 100):
             common.swipe_left(self)
+            start = time.time()
 #            self.driver.swipe(1050, 900, 300, 900, 1000)
             try:
-                self.driver.find_element_by_name("点击漫画左下角的收藏按钮即可添加到我的收藏频道").click()
+                WebDriverWait(self.driver, 3).until(
+                    lambda x: x.find_element_by_name("点击漫画左下角的收藏按钮即可添加到我的收藏频道"))
+#                self.driver.find_element_by_name("点击漫画左下角的收藏按钮即可添加到我的收藏频道").click()
                 print u"----图已测完， 到了我的收藏界面-----"
+                self.driver.quit()
             except:
                 print i
-
+            print time.time() - start
+            AppMethon.ShootBackgroundMethon(self)
+            '''
             # 等待收藏图标加载出来后截图
-            print time
+
             WebDriverWait(self.driver, 30).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/comic_praise_iv"))
             self.driver.get_screenshot_as_file("C:\Pycharm\ManBoker\YrTest\Screenshot")
-            print time-time
+
             # 拍背景
             self.driver.find_element_by_name("创作").click()
             self.driver.find_element_by_id("com.manboker.headportrait:id/sign_change_bg_layout").click()
@@ -80,7 +95,7 @@ class TestYangRan(unittest.TestCase):
             set_goback.click()
             set_goback.click()
 
-
+            '''
 if __name__ == "__main__":
     current_path = sys.path[0]
     Current_time = time.strftime('%y-%m-%d %X', time.localtime())
@@ -93,6 +108,7 @@ if __name__ == "__main__":
 
     suite = unittest.TestLoader().loadTestsFromTestCase(TestYangRan)
     unittest.TextTestRunner(verbosity=2).run(suite)
+
 
 
 

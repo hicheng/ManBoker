@@ -4,7 +4,6 @@ from selenium import webdriver
 
 
 
-
 '''
 用于封装执行过程中偶然出现的异常
 '''
@@ -38,3 +37,4 @@ def exceptionActivityView(self):
         check_putaway = self.driver.find_element_by_name("收起")
         check_putaway.click()
         sleep(2)
+
