@@ -17,11 +17,13 @@ PATH = lambda p: os.path.abspath(
 
 def CreateDir(filepath):
     '''
-    判断当前路径是否需要创建文件夹
+    判断当前路径是否存在文件夹
+    如果存在就删除后创建文件夹
     :param filepath:
     :return:
     '''
     current_path = sys.path[0]
+
     if os.path.exists(current_path + filepath):
         pass
     else:
@@ -39,12 +41,14 @@ def ShootBackgroundMethon(self):
     self.driver.get_screenshot_as_file(sys.path[0] + "/Screenshot/favorite/" + time.strftime('%H-%M-%S', time.localtime()) + '.jpg')
 
     # 拍背景
+    sleep(1)
     self.driver.find_element_by_name("创作").click()
     self.driver.find_element_by_id("com.manboker.headportrait:id/sign_change_bg_layout").click()
     self.driver.find_element_by_name("拍背景").click()
     WebDriverWait(self.driver, 30).until(
         lambda x: x.find_element_by_id("com.manboker.headportrait:id/change_bg_take_picture"))
     self.driver.get_screenshot_as_file(sys.path[0] + "/Screenshot/background/" + time.strftime('%H-%M-%S', time.localtime()) + '.jpg')
+    sleep(1)
     # 返回
     change_bg_back = self.driver.find_element_by_id("com.manboker.headportrait:id/change_bg_back_iv")
     change_bg_back.click()

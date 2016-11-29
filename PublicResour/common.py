@@ -7,7 +7,12 @@ def swipe_left(self):
     # 获取手机屏幕的宽、高
     width = self.driver.get_window_size()['width']
     height = self.driver.get_window_size()['height']
-    self.driver.swipe(width*4/5, height/2, width*1/5, height/2, 1000)
+    self.driver.swipe(width*5/6, height/2, width*1/6, height/2, 1000)
+
+def customize_swipe_left(self, widthx, heighty, widthx1, heighty1):
+    print "start swipe left"
+    # 获取手机屏幕的宽、高
+    self.driver.swipe(widthx, heighty, widthx1, heighty1, 1000)
 
 # 实现从手机屏幕1/4向右滑动到3/4
 def swipe_right(self):
