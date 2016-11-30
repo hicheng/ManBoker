@@ -2,6 +2,7 @@
 import os
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 def swipe_left(self):
     print "start swipe left"
     # 获取手机屏幕的宽、高
@@ -47,3 +48,32 @@ def wait_disappear_by_id(self, id, timeout):
     print "wait element appear"
     WebDriverWait(self.driver, timeout).until_not(lambda driver: driver.find_element_by_id(id), "E\元素未消失")
 
+#退出账号
+def Account_out(self):
+    self.driver.find_element_by_name("设置").click()
+    self.driver.find_element_by_name("退出登录").click()
+    self.driver.find_element_by_id("确定").click()
+    WebDriverWait(self.driver, 10).until(lambda driver: driver.find_element_by_id("android:id/button1"))
+
+#三方登录
+def Account_in(self):
+    '''
+    先判断是否已登录账号
+    :param self:
+    :return:
+    '''
+    try:
+        # 在登录时进入“我的”界面
+        album_set = self.driver.find_element_by_id("com.manboker.headportrait:id/entry_album_set")
+        album_set.click()
+    except:
+        #已有账号登录
+        entry_album = self.driver.find_element_by_id("com.manboker.headportrait:id/entry_album_set_icon")
+        entry_album.click()
+        Account_out(self)
+    # 点击头像
+    click_head_portrait = self.driver.find_element_by_id('com.manboker.headportrait:id/set_log_out')
+    click_head_portrait.click()
+    # 点击其它方式登录
+    login = self.driver.find_element_by_name("其他登录方式")
+    login.click()

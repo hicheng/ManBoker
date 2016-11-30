@@ -25,7 +25,11 @@ def CreateDir(filepath):
     current_path = sys.path[0]
 
     if os.path.exists(current_path + filepath):
-        pass
+        try:
+            os.remove(current_path + filepath)
+            os.path.exists(current_path + filepath)
+        except:
+            pass
     else:
         os.makedirs(current_path + filepath)
 
