@@ -67,7 +67,7 @@ class SocialLogin(unittest.TestCase):
         #点击QQ
         tvQq = self.driver.find_element_by_id("com.manboker.headportrait:id/tvQq")
         tvQq.click()
-        sleep(10)
+
 
         #输入手机号和密码
         email_phonenumber = WebDriverWait(self.driver, 30).until(lambda x: x.find_element_by_xpath("//android.view.View[@content-desc=\"QQ登录\"]/android.view.View[2]/android.widget.EditText[1]"))
@@ -79,6 +79,29 @@ class SocialLogin(unittest.TestCase):
         print u'QQ成功登录'
         # 退出账号
         common.Account_out(self)
+
+    def testFaceBook(self):
+
+        '''
+        需要连接VPN
+        :return:
+        '''
+        #点击Facebook
+        tvFacebook = self.driver.find_element_by_id("com.manboker.headportrait:id/tvFacebook")
+        tvFacebook.click()
+
+        #输入手机号和密码
+        email_phomenumber = WebDriverWait(self.driver, 50).until(lambda x: x.find_element_by_xpath("//android.view.View/android.widget.EditText[1]"))
+        email_phomenumber.send_keys("1014910206@qq.com")
+        password = self.driver.find_element_by_xpath("//android.view.View/android.widget.EditText[2]")
+        password.send_keys("baishun1")
+        self.driver.find_element_by_xpath("//android.widget.Button[@content-desc=\"登录\"]").click()
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_xpath("//android.widget.Button[@content-desc=\"确定\"]")).click()
+        WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/imageView_head"))
+        print u'facebook登录成功'
+        #退出账号
+        common.Account_out(self)
+
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SocialLogin)
     unittest.TextTestRunner(verbosity=2).run(suite)

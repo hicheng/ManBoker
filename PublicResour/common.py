@@ -52,7 +52,7 @@ def wait_disappear_by_id(self, id, timeout):
 def Account_out(self):
     self.driver.find_element_by_name("设置").click()
     self.driver.find_element_by_name("退出登录").click()
-    self.driver.find_element_by_id("确定").click()
+    self.driver.find_element_by_name("确定").click()
     WebDriverWait(self.driver, 10).until(lambda driver: driver.find_element_by_id("android:id/button1"))
 
 #三方登录
