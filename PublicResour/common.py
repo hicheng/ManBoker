@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 from selenium.webdriver.support.ui import WebDriverWait
+from time import sleep
 
 
 def swipe_left(self):
@@ -9,6 +10,13 @@ def swipe_left(self):
     width = self.driver.get_window_size()['width']
     height = self.driver.get_window_size()['height']
     self.driver.swipe(width*5/6, height/2, width*1/6, height/2, 1000)
+
+def tap(self):
+    print "start swipe left"
+    # 获取手机屏幕的宽、高
+    width = self.driver.get_window_size()['width']
+    height = self.driver.get_window_size()['height']
+    self.driver.tap(width*1/2, height/2, width*3/4, height/2)
 
 def customize_swipe_left(self, widthx, heighty, widthx1, heighty1):
     print "start swipe left"
@@ -40,7 +48,7 @@ def wait_appear_by_xpath(self, xpath, timeout):
 
 def wait_appear_by_name(self, name, timeout):
     print "wait element appear"
-    WebDriverWait(self.driver, timeout).until(lambda driver: driver.find_element_by_name(name), "E\元素未出现")
+    WebDriverWait(self.driver, timeout).until(lambda driver: driver.find_element_by_name(name), "未出现")
 
 
 #等待某个元素消失
@@ -78,3 +86,31 @@ def Account_in(self):
     login = self.driver.find_element_by_name("其他登录方式")
     login.click()
 
+def exceptionStartHead(self):
+    '''
+    点击全屏幕
+    以防进首页时头像会有可点击的闪光效果等
+    :return:
+    '''
+    try:
+        self.driver.find_element_by_class_name("android.widget.FrameLayout").click()
+        sleep(2)
+    except:
+        pass
+
+def exceptionActivityView(self):
+    '''
+    检查活动专区页面的活动详情， if活动详情打开就关闭
+    :return:
+    '''
+    try:
+        check_view = self.driver.find_element_by_name("查看活动详情")
+        check_view.click()
+        sleep(2)
+        check_putaway = self.driver.find_element_by_name("收起")
+        check_putaway.click()
+        sleep(2)
+    except:
+        check_putaway = self.driver.find_element_by_name("收起")
+        check_putaway.click()
+        sleep(2)
