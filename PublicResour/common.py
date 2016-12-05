@@ -77,3 +77,4 @@ def Account_in(self):
     # 点击其它方式登录
     login = self.driver.find_element_by_name("其他登录方式")
     login.click()
+
