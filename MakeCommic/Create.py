@@ -22,6 +22,9 @@ class CreateComic(unittest.TestCase):
 
         self.driver.find_element_by_name("创作").click()  # 进入创作
 
+    def tearDown(self):
+        self.driver.quit()
+
     def testShootBackground(self):
         '''
         拍背景，具体详细的功能
@@ -262,9 +265,6 @@ class CreateComic(unittest.TestCase):
         sleep(3)
 
         print u"-----添加画笔检查完毕-----"
-
-    def tearDown(self):
-        self.driver.quit()
 
 
 if __name__ == "__main__":

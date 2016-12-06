@@ -3,7 +3,12 @@ import os
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 
-
+'''
+切换webview
+webview = self.driver.contexts[1]
+        print webview
+        self.driver.switch_to.context(webview)
+'''
 def swipe_left(self):
     print "start swipe left"
     # 获取手机屏幕的宽、高
