@@ -1,7 +1,7 @@
 # -*- coding:UTF-8 -*-
 from selenium import webdriver
 from time import sleep
-import Desired_capabilities
+from PublicResour import Desired_Capabilities
 import os
 import unittest
 
@@ -12,7 +12,7 @@ PATH = lambda p: os.path.abspath(
 
 class elementA(unittest.TestCase):
     def test_(self):
-        desired_caps = Desired_capabilities.startdevices()
+        desired_caps = Desired_Capabilities.startdevices()
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         sleep(5)
         print u'设备配置成功'

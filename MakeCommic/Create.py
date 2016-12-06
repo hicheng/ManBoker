@@ -35,7 +35,7 @@ class CreateComic(unittest.TestCase):
         confirm.click()
         #编辑背景
         self.driver.find_element_by_name("编辑").click()
-        common.tap(self) #滑动背景图
+        self.driver.flick(128, 202, 394, 424) #滑动背景图
         confirm.click()
         #点击保存分享， 防止相册无图的情况
         self.driver.find_element_by_name("保存/分享").click()
@@ -51,7 +51,7 @@ class CreateComic(unittest.TestCase):
         common.tap(self)  # 滑动背景图
         confirm.click()
         self.driver.find_element_by_name("保存/分享").click() #点击保存分享
-
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
         #返回到主界面
         for i in range(0, 3):
             self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
@@ -72,7 +72,7 @@ class CreateComic(unittest.TestCase):
         #进入静态贴图
         self.driver.find_element_by_id("com.manboker.headportrait:id/sign_qp_image_iv").click()
         #选择所有频道的第一个贴图
-        select_textures = WebDriverWait(self.driver,10).until(lambda x: x.find_element_by_class_name("android.widget.RelativeLayout"))
+        select_textures = WebDriverWait(self.driver,10).until(lambda x: x.find_element_by_xpath("//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_qp_image\"]/android.widget.RelativeLayout[1]"))
         select_textures.click()
         self.driver.find_element_by_name("浪漫").click()
         select_textures.click()
@@ -80,7 +80,7 @@ class CreateComic(unittest.TestCase):
         select_textures.click()
         self.driver.find_element_by_name("爱情").click()
         select_textures.click()
-        self.driver.find_element_by_name("爱萌宠").click()
+        self.driver.find_element_by_name("萌宠").click()
         select_textures.click()
         self.driver.find_element_by_name("萌物").click()
         select_textures.click()
@@ -91,11 +91,11 @@ class CreateComic(unittest.TestCase):
                 self.driver.find_element_by_name("亲～您添加的贴图已达到上限")
                 print u"添加了10张图"
             except:
-                print '添加了第' + i + '静态图'
+                pass
 
         #保存分享
         self.driver.find_element_by_name("保存/分享").click()  # 点击保存分享
-
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
         # 返回到主界面
         for i in range(0, 2):
             self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
@@ -113,29 +113,35 @@ class CreateComic(unittest.TestCase):
         :return:
         '''
         #切换文字气泡
+
         self.driver.find_element_by_id("com.manboker.headportrait:id/sign_qp_border_iv").click()
-        for i in range(1, 7):
-            select_bubbles = self.driver.find_elements_by_class_name("android.widget.RelativeLayout")
-            select_bubbles[i].click()
+
+        for i in range(2, 8):
+            self.driver.find_element_by_xpath("//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_qp_border\"]/android.widget.RelativeLayout[%d]" %i).click()
             sleep(1)
 
+
         #添加5个文字气泡
-        for n in range (0, 6):
+        for n in range (2, 7):
             self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_add").click()
             sleep(1)
             try:
-                self.driver.find_element_by_name("亲～您添加的气泡已达到上限")
-                print u"添加了5个气泡"
+                WebDriverWait(self.driver, 2).until(lambda x: x.find_element_by_name("亲～您添加的气泡已达到上限"))
+                print u"亲～您添加的气泡已达到上限"
             except:
-                print u"添加第"+ n + u"个气泡"
+                print u'添加的第 %d 个气泡' %n
 
         #更改文字颜色
         self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_color").click()
-        for m in range(0, 16):
-            select_color = self.driver.find_elements_by_class_name("android.view.View")
-            select_color[m].click()
+
+        '''
+        无法找到元素。。
+        for m in range(1, 16):
+            self.driver.find_element_by_xpath("//android.widget.HorizontalScrollView/android.view.View[%d]" %m).click()
+        '''
 
         #更改文本显示的格式
+        self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_align").click()
         self.driver.find_element_by_name("居中对齐").click()
         self.driver.find_element_by_name("右对齐").click()
         self.driver.find_element_by_name("左对齐").click()
@@ -147,11 +153,11 @@ class CreateComic(unittest.TestCase):
         self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_confirm").click()  #确认编辑
         # 保存分享
         self.driver.find_element_by_name("保存/分享").click()  # 点击保存分享
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
 
         # 返回到主界面
-        for i in range(0, 2):
-            self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
-            sleep(1)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
         sleep(3)
 
@@ -166,24 +172,100 @@ class CreateComic(unittest.TestCase):
         '''
         #进入动态背景图
         self.driver.find_element_by_id("com.manboker.headportrait:id/sign_full_gif_iv").click()
-        select_Dynamic = self.driver.find_elements_by_class_name("android.widget.RelativeLayout") #选择背景图
-        select_Dynamic[1].click()
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_xpath("//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_full_gif\"]/android.widget.RelativeLayout[2]")).click() #选择背景图
         sleep(5)
-        select_Dynamic[0].click()
+        self.driver.find_element_by_xpath(
+            "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_full_gif\"]/android.widget.RelativeLayout[1]").click()
         sleep(1)
-        select_Dynamic[1].click()
+        self.driver.find_element_by_xpath(
+            "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_full_gif\"]/android.widget.RelativeLayout[3]").click()
         sleep(5)
         # 保存分享
         self.driver.find_element_by_name("保存/分享").click()  # 点击保存分享
+        WebDriverWait(self.driver,20).until(lambda x: x.find_element_by_name("定制"))
 
         # 返回到主界面
-        for i in range(0, 2):
-            self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
-            sleep(1)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
         sleep(3)
 
         print u"-----添加动态背景图检查完毕-----"
+
+    def testBrush(self):
+        '''
+        画笔详情功能
+        1. 涂鸦后撤销操作， 撤销操作后的操作
+        2. 清空涂鸦
+        3. 涂鸦粗细调节， 透明多调节
+        4. 全屏涂鸦
+        :return:
+        '''
+        self.driver.find_element_by_id("com.manboker.headportrait:id/create_sign").click()  #进入画笔
+        #画笔涂鸦
+        self.driver.swipe(350, 600, 850, 600, 500)
+        self.driver.swipe(450, 600, 950, 600, 500)
+        #取色器
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_tool_straw").click()   #点击取色器
+        self.driver.swipe(250, 600, 750, 600, 1500)
+        self.driver.swipe(350, 600, 850, 600, 1500)
+        self.driver.swipe(450, 600, 950, 600, 1500)
+        #橡皮擦
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_tool_eraser").click()   #点击橡皮擦
+        self.driver.swipe(250, 600, 750, 600, 500)
+        self.driver.swipe(350, 600, 850, 600, 500)
+        self.driver.swipe(450, 600, 950, 600, 500)
+
+        #向前撤销操作
+        for i in range(0, 6):
+            self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_operation_undo").click()
+            sleep(0.5)
+        #向后撤销操作
+        for m in range(0, 6):
+            self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_operation_redo").click()
+            sleep(0.5)
+
+        #涂鸦后删除(调节粗细和透明度)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_tool_pen").click()  #选择画笔
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_operation_up_down").click()  #隐藏工具栏
+        sleep(2)
+        self.driver.swipe(220, 350, 220, 850, 500)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_up").click()  #打开工具栏
+        sleep(1)
+        self.driver.tap([(100, 1698)], 500)     #调节画笔粗细
+        self.driver.tap([(1075, 1698)], 500)        #调节透明度
+        self.driver.swipe(420, 350, 420, 850, 500)
+        self.driver.tap([(450, 1698)], 500)  # 调节画笔粗细
+        self.driver.tap([(730, 1698)], 500)  # 调节透明度
+        self.driver.swipe(620, 350, 620, 850, 500)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_operation_clear").click()  #清除所有操作
+        self.driver.find_element_by_name("确定").click()      #确认删除所有操作
+
+        #调色板
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_tool_pick_color").click()     #点击打开调色板
+        select_color = self.driver.find_elements_by_class_name("android.view.View")     #选择颜色
+        select_color[4].click()
+        self.driver.find_element_by_xpath("//android.view.View[@resource-id=\"com.manboker.headportrait:id/old_color_view\"]") #切换为原始颜色
+        self.driver.find_element_by_id("com.manboker.headportrait:id/color_picker_close_btn").click()       #关闭调色板
+        self.driver.swipe(250, 600, 750, 600, 1500)
+        self.driver.swipe(350, 600, 850, 600, 1500)
+        self.driver.swipe(450, 600, 950, 600, 1500)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/sign_pen_done").click()    #点击确认
+
+        # 保存分享
+        self.driver.find_element_by_name("保存/分享").click()  # 点击保存分享
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
+        #返回到主界面
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
+        sleep(3)
+
+        print u"-----添加画笔检查完毕-----"
+
+    def tearDown(self):
+        self.driver.quit()
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(CreateComic)

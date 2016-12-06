@@ -11,12 +11,6 @@ def swipe_left(self):
     height = self.driver.get_window_size()['height']
     self.driver.swipe(width*5/6, height/2, width*1/6, height/2, 1000)
 
-def tap(self):
-    print "start swipe left"
-    # 获取手机屏幕的宽、高
-    width = self.driver.get_window_size()['width']
-    height = self.driver.get_window_size()['height']
-    self.driver.tap(width*1/2, height/2, width*3/4, height/2)
 
 def customize_swipe_left(self, widthx, heighty, widthx1, heighty1):
     print "start swipe left"

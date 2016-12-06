@@ -6,7 +6,7 @@ from appium import webdriver
 #import unittest
 from time import sleep
 import os
-import Desired_capabilities
+from PublicResour import Desired_Capabilities
 # Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__),p)
@@ -14,7 +14,7 @@ PATH = lambda p: os.path.abspath(
 
 class ComicInfoPage:
     def start(self):
-        desired_caps = Desired_capabilities.startdevices()
+        desired_caps = Desired_Capabilities.startdevices()
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         sleep(5)
         print u'设备配置成功'
