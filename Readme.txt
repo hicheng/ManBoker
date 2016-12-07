@@ -3,7 +3,7 @@
 2. 做漫画界面部分交互操作
 3. 一些testDemo
 4. 封装一些方法
-
+5. Monkeytest测试和参数说明
 
 自动化测试文档：
 http://blog.csdn.net/freshlover/article/details/42528643

@@ -4,5 +4,7 @@
 3. 一些testDemo
 4. 封装一些方法
 
+
+自动化测试文档：
 http://blog.csdn.net/freshlover/article/details/42528643
 https://anikikun.gitbooks.io/appium-girls-tutorial/content/touch_actoin.html
