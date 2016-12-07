@@ -41,13 +41,14 @@ class CreateComic(unittest.TestCase):
 
         try:
             #此处修改循环查看图的次数
-            for comic in range(0, 100):
+            for comic in range(1, 101):
                 try:
                     common.swipe_left(self)
                     sleep(2)
                     print u'第%d张图' %comic
+
                 except:
-                    print u'脚本停止或图已检查完成'
+                    print u'翻页出现异常请检查'
         except:
             print u"翻页出现异常请检查"
 
