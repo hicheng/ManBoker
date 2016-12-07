@@ -42,8 +42,8 @@ class CreateComic(unittest.TestCase):
         confirm.click()
         #点击保存分享， 防止相册无图的情况
         self.driver.find_element_by_name("保存/分享").click()
-        sleep(2)
-        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()  #返回， 此时相册中存有背景图
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()  #返回， 此时相册中存有背景图
 
         #选背景
         self.driver.find_element_by_name("选背景").click()  # 进入选背景
@@ -56,12 +56,10 @@ class CreateComic(unittest.TestCase):
         self.driver.find_element_by_name("保存/分享").click() #点击保存分享
         WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
         #返回到主界面
-        for i in range(0, 3):
-            self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
-            sleep(1)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
-        sleep(3)
-
         print u"-----拍背景检查完毕-----"
 
     def testStaticTextures(self):
@@ -100,11 +98,10 @@ class CreateComic(unittest.TestCase):
         self.driver.find_element_by_name("保存/分享").click()  # 点击保存分享
         WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("定制"))
         # 返回到主界面
-        for i in range(0, 2):
-            self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
-            sleep(1)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
-        sleep(3)
 
         print u"-----添加静态图检查完毕-----"
 
@@ -121,7 +118,7 @@ class CreateComic(unittest.TestCase):
 
         for i in range(2, 8):
             self.driver.find_element_by_xpath("//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/sign_qp_border\"]/android.widget.RelativeLayout[%d]" %i).click()
-            sleep(1)
+            sleep(0.5)
 
 
         #添加5个文字气泡
@@ -134,10 +131,10 @@ class CreateComic(unittest.TestCase):
             except:
                 print u'添加的第 %d 个气泡' %n
 
-        #更改文字颜色
-        self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_color").click()
 
         '''
+        #更改文字颜色
+        self.driver.find_element_by_id("com.manboker.headportrait:id/create_text_menu_color").click()
         无法找到元素。。
         for m in range(1, 16):
             self.driver.find_element_by_xpath("//android.widget.HorizontalScrollView/android.view.View[%d]" %m).click()
@@ -189,6 +186,7 @@ class CreateComic(unittest.TestCase):
 
         # 返回到主界面
         self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback").click()
+        self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/set_goback").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_layout").click()
         sleep(3)

@@ -21,7 +21,7 @@ class MakeUpsComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-        self.driver.find_element_by_name("美妆").click()  # 进入创作
+        self.driver.find_element_by_name("美妆").click()  # 进入美妆
         sleep(10)
 
     def tearDown(self):
@@ -45,7 +45,7 @@ class MakeUpsComic(unittest.TestCase):
             for adult in range(2, 11):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % adult).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换成人脸型时可能网速不好，请检查异常'
 
@@ -56,7 +56,7 @@ class MakeUpsComic(unittest.TestCase):
             for child in range(2, 10):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % child).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换儿童脸型时可能网速不好，请检查异常'
 
@@ -67,7 +67,7 @@ class MakeUpsComic(unittest.TestCase):
             for baby in range(2, 7):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % baby).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换婴儿脸型时可能网速不好，请检查异常'
 
@@ -78,7 +78,7 @@ class MakeUpsComic(unittest.TestCase):
             for pupil in range(2, 11):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % pupil).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换眼睛类型时可能网速不好，请检查异常'
         select_face.click()  # 去掉美瞳效果
@@ -90,7 +90,7 @@ class MakeUpsComic(unittest.TestCase):
             for beard in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % beard).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换胡子类型时可能网速不好，请检查异常'
         select_face.click()  # 去掉胡子效果
@@ -203,9 +203,9 @@ class MakeUpsComic(unittest.TestCase):
         select_hair.click()
 
         # 换头发颜色
-        self.driver.find_element_by_id("com.manboker.headportrait:id/btn_change_hair_colors").click()  # 换头发颜色
         try:  # 尝试换肤色
             for haircolors in range(0, 6):
+                self.driver.find_element_by_id("com.manboker.headportrait:id/btn_change_hair_colors").click()  # 换头发颜色
                 hair_color = self.driver.find_elements_by_id("com.manboker.headportrait:id/color_item")
                 hair_color[haircolors].click()
                 sleep(0.5)
@@ -227,7 +227,7 @@ class MakeUpsComic(unittest.TestCase):
             for shorthair in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % shorthair).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换短发类型时可能网速不好，请检查异常'
         # 长发
@@ -237,7 +237,7 @@ class MakeUpsComic(unittest.TestCase):
             for longhair in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % longhair).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换长发类型时可能网速不好，请检查异常'
         # 卷发
@@ -247,7 +247,7 @@ class MakeUpsComic(unittest.TestCase):
             for curls in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % lcurls).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换卷发类型时可能网速不好，请检查异常'
         # 辫子
@@ -257,7 +257,7 @@ class MakeUpsComic(unittest.TestCase):
             for braid in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % braid).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换辫子类型时可能网速不好，请检查异常'
         # 儿童
@@ -267,7 +267,7 @@ class MakeUpsComic(unittest.TestCase):
             for child in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % child).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换儿童类型时可能网速不好，请检查异常'
         # 古装
@@ -277,7 +277,7 @@ class MakeUpsComic(unittest.TestCase):
             for costume in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % costume).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换古装类型时可能网速不好，请检查异常'
         # 民族
@@ -287,7 +287,7 @@ class MakeUpsComic(unittest.TestCase):
             for nation in range(2, 13):
                 self.driver.find_element_by_xpath(
                     "//it.sephiroth.android.library.widget.HListView[@resource-id=\"com.manboker.headportrait:id/dress_gallery_dr\"]/android.widget.RelativeLayout[%d]" % nation).click()
-                sleep(1)
+                sleep(0.5)
         except:
             print u'换民族类型时可能网速不好，请检查异常'
 
