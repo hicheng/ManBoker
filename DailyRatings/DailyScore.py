@@ -3,9 +3,9 @@ from selenium import webdriver
 from appium import webdriver
 import unittest
 from time import sleep
-import Desired_Capabilities
+from PublicResour import Desired_Capabilities
 import os
-import common
+
 
 '''
 查找h5元素时尝试按住botton时用automator获取元素

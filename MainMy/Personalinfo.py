@@ -1,9 +1,7 @@
 # -*- coding:UTF-8 -*-
 
 import time
-import OrdinaryLogin
 #已登录账号
-OrdinaryLogin.elementA()
 class PersonalInfo(object):
     def enterMine(self):
         # 点击头像

@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
-from selenium import webdriver
-from appium import webdriver
+import os
 import unittest
 from time import sleep
-import Desired_Capabilities
-import os
-import AppException
+
+from appium import webdriver
+from selenium import webdriver
+
+from PublicResour import Desired_Capabilities, AppException
 
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(

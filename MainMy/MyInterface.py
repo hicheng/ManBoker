@@ -5,7 +5,7 @@ from selenium import webdriver
 from appium import webdriver
 from time import sleep
 import os
-import Desired_Capabilities
+from PublicResour import Desired_Capabilities
 
 """
     登录状态下检查“我的”界面的所有的功能模块

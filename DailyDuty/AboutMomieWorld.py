@@ -1,14 +1,11 @@
 # -*- coding:utf-8 -*-
-from selenium import webdriver
-from appium import webdriver
+import os
 import unittest
 from time import sleep
-import Desired_Capabilities
+from appium import webdriver
+from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-import os
-import AppException
-
-import common
+from PublicResour import Desired_Capabilities, AppException
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -60,7 +57,7 @@ class aboutMomieWorld(unittest.TestCase):
         topic_comic.click()
         sleep(8)
 
-        AppException.DefineException().exceptionStartHead()
+        AppException.exceptionStartHead(self)
 
         view_to_ok = self.driver.find_element_by_name("确定")
         view_to_ok.click()
@@ -73,7 +70,7 @@ class aboutMomieWorld(unittest.TestCase):
         content_add.click()
         sleep(4)
         try:
-            common.wait_appear_by_id(self, "com.manboker.headportrait:id/item_controller_cachedimageview",3)
+            WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/item_controller_cachedimageview"))
             print u'发表漫画赠送两魔豆'
 
         except:
@@ -83,7 +80,8 @@ class aboutMomieWorld(unittest.TestCase):
         self.driver.tap([(1003, 1696), (1068, 1731)], 500)
 
         try:
-            common.wait_appear_by_id(self, "com.manboker.headportrait:id/item_controller_cachedimageview",3)
+            WebDriverWait(self.driver, 10).until(
+                lambda x: x.find_element_by_id("com.manboker.headportrait:id/item_controller_cachedimageview"))
             print u'点赞漫画赠送两魔豆'
         except:
             print u"未检测出点赞漫画赠送两魔豆"

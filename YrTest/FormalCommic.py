@@ -1,13 +1,15 @@
 # -*- coding:utf-8 -*-
-from PublicResour import Desired_Capabilities
-from selenium import webdriver
-from appium import webdriver
-
 import time
-from selenium.webdriver.support.ui import WebDriverWait
 import unittest
-from PublicResour import common
+
+from appium import webdriver
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+
 from DailyDuty import AppMethon
+from PublicResour import Desired_Capabilities, AppMethon
+from PublicResour import common
+
 
 class TestYangRan(unittest.TestCase):
 

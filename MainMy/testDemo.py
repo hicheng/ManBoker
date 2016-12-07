@@ -3,7 +3,7 @@ from selenium import webdriver
 from appium import webdriver
 import unittest
 from time import sleep
-import Desired_Capabilities
+from PublicResour import Desired_Capabilities
 from selenium.webdriver.support.ui import WebDriverWait
 import os
 

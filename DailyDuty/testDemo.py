@@ -1,14 +1,14 @@
 # -*- coding:utf-8 -*-
-from selenium import webdriver
-from appium import webdriver
+import os
 import unittest
 from time import sleep
-import Desired_Capabilities
-from selenium.webdriver.support.ui import WebDriverWait
-import os
-import AppException
 
-import common
+from appium import webdriver
+from selenium import webdriver
+
+from PublicResour import Desired_Capabilities, AppException
+from PublicResour import common
+
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
