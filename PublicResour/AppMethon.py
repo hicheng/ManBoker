@@ -71,7 +71,7 @@ def  NormalLogin(self, accountnumber, password):
     '''
     try:
     # 判断账号是否登录
-        WebDriverWait(self.driver, 5).until(lambda  x: x.find_element_by_id("com.manboker.headportrait:id/entry_album_set")).click()
+        WebDriverWait(self.driver, 5).until(lambda  x: x.find_element_by_id("com.manboker.headportrait:id/entry_album_set")).click()  #头像icon进行判断
         self.driver.find_element_by_id("com.manboker.headportrait:id/set_log_out").click()
         self.driver.find_element_by_id("com.manboker.headportrait:id/set_other").click()
         # 清除输入框内的内容
@@ -85,3 +85,20 @@ def  NormalLogin(self, accountnumber, password):
     except:
         print "您已登录账号"
 
+def TakePicturesTutorial(self):
+    '''
+    首次安装App时的拍照教程
+    :param self:
+    :return:
+    '''
+    try:
+        WebDriverWait(self.driver, 5).until(
+            lambda x: x.find_element_by_id("com.manboker.headportrait:id/take_picture")).click() #判断是否进入拍照流程
+        #默认做男性头像选择中年男子
+        WebDriverWait(self.driver, 10).until(
+            lambda x: x.find_element_by_id("com.manboker.headportrait:id/iv_gender_man")).click()
+        WebDriverWait(self.driver, 20).until(
+            lambda x: x.find_element_by_id("背景")).click()
+        print u'拍照教程已完成'
+    except:
+        pass

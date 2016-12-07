@@ -6,7 +6,7 @@ from time import sleep
 from appium import webdriver
 from selenium import webdriver
 
-from PublicResour import Desired_Capabilities, AppException
+from PublicResour import Desired_Capabilities
 from PublicResour import common
 
 #Return ads path relative to this file not cwd
@@ -60,7 +60,7 @@ class aboutComic(unittest.TestCase):
         topic_comic.click()
         sleep(8)
 
-        AppException.DefineException().exceptionStartHead()
+        common.exceptionStartHead()
 
         view_to_ok = self.driver.find_element_by_name("确定")
         view_to_ok.click()

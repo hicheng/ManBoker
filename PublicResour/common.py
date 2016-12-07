@@ -15,18 +15,15 @@ def swipe_left(self):
     height = self.driver.get_window_size()['height']
     self.driver.swipe(width*6/7, height/2, width*1/7, height/2, 1000)
 
-
 def swipe_right(self):
     # 获取手机屏幕的宽、高
     width = self.driver.get_window_size()['width']
     height = self.driver.get_window_size()['height']
     self.driver.swipe(width * 1 / 5, height / 2, width * 4 / 5, height / 2, 1000)
 
-
 def wait_appear_by_name(self, name, timeout):
     print "wait element appear"
     WebDriverWait(self.driver, timeout).until(lambda driver: driver.find_element_by_name(name), "未出现")
-
 
 #等待某个元素消失
 def wait_disappear_by_id(self, id, timeout):

@@ -5,7 +5,7 @@ from time import sleep
 from appium import webdriver
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from PublicResour import Desired_Capabilities, AppException
+from PublicResour import Desired_Capabilities, common
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -57,7 +57,7 @@ class aboutMomieWorld(unittest.TestCase):
         topic_comic.click()
         sleep(8)
 
-        AppException.exceptionStartHead(self)
+        common.exceptionStartHead(self)
 
         view_to_ok = self.driver.find_element_by_name("确定")
         view_to_ok.click()

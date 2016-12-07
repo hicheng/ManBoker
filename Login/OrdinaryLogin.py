@@ -47,9 +47,6 @@ class elementA(unittest.TestCase):
         login_btn = driver.find_element_by_id("com.manboker.headportrait:id/login_submit")
         login_btn.click()
         time.sleep(2)
-    def exitApp(cls):
-        cls.driver.close_app()
-        cls.driver.quit()
-        print u'退出程序'
+
 
 

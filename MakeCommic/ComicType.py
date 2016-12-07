@@ -3,10 +3,13 @@ from appium import webdriver
 import unittest
 from PublicResour import Desired_Capabilities
 from time import sleep
-from PublicResour import common
+from PublicResour import common, AppMethon
 from selenium.webdriver.support.ui import WebDriverWait
+import sys
+import time
 '''
 测试漫画分类功能，查看分类的所有图片
+1. 用来线上测图
 1. 测试手机为蓝魔，如果是小屏手机则要改规律
 '''
 
@@ -20,7 +23,7 @@ class CreateComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-
+        AppMethon.CreateDir('\Test')
 
 
     def tearDown(self):
@@ -41,10 +44,12 @@ class CreateComic(unittest.TestCase):
 
         try:
             #此处修改循环查看图的次数
-            for comic in range(1, 101):
+            for comic in range(1, 1000):
                 try:
                     common.swipe_left(self)
                     sleep(2)
+                    self.driver.get_screenshot_as_file(
+                        sys.path[0] + "/Test/" + time.strftime('%H-%M-%S', time.localtime()) + '.jpg')
                     print u'第%d张图' %comic
 
                 except:
