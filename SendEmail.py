@@ -13,12 +13,13 @@ class Email:
     '''
     发送附件邮件
     '''
+
     def __init__(self):
         pass
 
     def sendHtmlEamil(self, server, fro, to, cc, subject, html):
 
-        #发送Html报告
+        # 发送Html报告
         msg = MIMEMultipart('related')
         msg['From'] = fro
         msg['Subject'] = '=?%s?B?%s?=' % ('utf-8', b64encode(subject))
@@ -34,7 +35,6 @@ class Email:
         msgHtml = MIMEText(open(html, 'rb').read(), 'html', 'utf-8')
         msgAlternative.attach(msgHtml)
         self.send(server, fro, to, msg)
-
 
     def send(self, server, fro, to, msg):
 
@@ -68,6 +68,7 @@ class Email:
             print "发送报告失败"
 
         print("End to send email !")
+
 
 if __name__ == "__main__":
     se = Email()

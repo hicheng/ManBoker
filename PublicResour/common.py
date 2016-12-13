@@ -2,6 +2,8 @@
 import os
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
+import sys
+import time
 
 '''
 切换webview
@@ -88,3 +90,20 @@ def exceptionActivityView(self):
         check_putaway = self.driver.find_element_by_name("收起")
         check_putaway.click()
         sleep(2)
+
+def ShootBackground(self, sysPath, filDir):
+    '''
+    只进行做漫画创作流程,拍背景时拍照
+    :param self:
+    :return:
+    '''
+    self.driver.find_element_by_name("创作").click()  #点击创作
+    WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/sign_change_bg_layout")).click()      #点击进入拍背景功能
+    self.driver.find_element_by_name("拍背景").click()  #点击拍背景
+    bg_back = WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/change_bg_back_iv"))
+    self.driver.get_screenshot_as_file(
+        sysPath + filDir + time.strftime('%H-%M-%S', time.localtime()) + '.jpg')
+    bg_back.click()
+    set_goback = WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("com.manboker.headportrait:id/set_goback"))
+    set_goback.click()
+    set_goback.click()

@@ -11,9 +11,9 @@
 	rem -v -v 提供较为详细的日志， 包括每个发送到Activity的时间信息
 	rem -v -v -v 最详细的日志， 包括了测试中选中/未选中的Activity信息
 
-	rem kill MonkeyTest  adb shell ps | findstr monkey    adb kill PID
+	rem kill MonkeyTest  adb shell ps | findstr monkey    adb shell kill PID
 
 echo  ---------- 执行Monkey测试 ----------
-powershell "adb shell monkey -p com.manboker.headportrait --throttle 300 -s 10 -v -v 500 | tee log.log"
+powershell "adb shell monkey -p com.manboker.headportrait --throttle 300 -s 100 -v -v 50000 | tee log.log"
 
 echo. & pause

@@ -14,6 +14,7 @@ PATH = lambda p: os.path.abspath(
 )
 
 class aboutComic(unittest.TestCase):
+
     def setUp(self):
         desired_caps = Desired_Capabilities.startdevices()
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps )

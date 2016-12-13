@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-import os
-import unittest
+import os, time
+import unittest, BSTestRunner
 from time import sleep
 from appium import webdriver
 from selenium import webdriver
@@ -357,7 +357,18 @@ class aboutMomieWorld(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-
 if __name__ == "__main__":
+
     suite = unittest.TestLoader().loadTestsFromTestCase(aboutMomieWorld)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    #    unittest.TextTestRunner(verbosity=2).run(suite)
+    timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+    filename = "C:\Pycharm\ManBoker\\report.html"
+    print (filename)
+    fp = open(filename, 'w')
+    runner = BSTestRunner.BSTestRunner(
+        stream=fp,
+        title='Test',
+        description='aa'
+    )
+    runner.run(suite)
+    fp.close()

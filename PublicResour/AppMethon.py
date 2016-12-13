@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 '''
-这个脚本暂时未启用
+
 '''
 from time import sleep
 import os
 import sys
 import time
+import shutil
 from selenium.webdriver.support.ui import WebDriverWait
 
 
@@ -25,8 +26,10 @@ def CreateDir(filepath):
 
     if os.path.exists(current_path + filepath):
         try:
-            os.remove(current_path + filepath)
-            os.path.exists(current_path + filepath)
+            print "2"
+            shutil.rmtree(current_path + filepath)      #删除文件夹， 文件夹中包含子文件
+            sleep(2)
+            os.makedirs(current_path + filepath)
         except:
             pass
     else:
@@ -102,3 +105,5 @@ def TakePicturesTutorial(self):
         print u'拍照教程已完成'
     except:
         pass
+
+CreateDir('\Test')
