@@ -2,14 +2,18 @@
 import os, time
 import unittest, BSTestRunner
 from time import sleep
-from appium import webdriver
 from selenium import webdriver
+from appium import webdriver
+
 from selenium.webdriver.support.ui import WebDriverWait
 from PublicResour import Desired_Capabilities, common
+from DailyDuty import AboutCommic
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
+
+
 class aboutMomieWorld(unittest.TestCase):
     def setUp(self):
         desired_caps = Desired_Capabilities.startdevices()
@@ -18,12 +22,16 @@ class aboutMomieWorld(unittest.TestCase):
         sleep(10)
 
     def testActivitiesContent(self):
+        '''
+        进入社区发表帖子， 判断每日首次发帖是否给了魔豆
+        :return:
+        '''
         #进入社区首页
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[3].click()
         sleep(8)
 
-        #检查活动的详情内容
+        # 检查活动的详情内容
         item_content = self.driver.find_elements_by_id("com.manboker.headportrait:id/topic_item_content")
         item_content[1].click()
         sleep(5)
@@ -56,9 +64,6 @@ class aboutMomieWorld(unittest.TestCase):
         topic_comic = self.driver.find_element_by_name("漫画")
         topic_comic.click()
         sleep(8)
-
-        common.exceptionStartHead(self)
-
         view_to_ok = self.driver.find_element_by_name("确定")
         view_to_ok.click()
         sleep(3)
@@ -77,7 +82,7 @@ class aboutMomieWorld(unittest.TestCase):
             print u'未检测出发表漫画赠送两魔豆'
 
         #点赞
-        self.driver.tap([(1003, 1696), (1068, 1731)], 500)
+        self.driver.find_element_by_id("com.manboker.headportrait:id/topic_content_commenticon_praise").click()
 
         try:
             WebDriverWait(self.driver, 10).until(
@@ -98,6 +103,11 @@ class aboutMomieWorld(unittest.TestCase):
         sleep(2)
 
     def testAboutMe(self):
+        '''
+        主要检查用户个人空间
+        包括发信息、加好友、对用户发表的动态进行点赞、加黑名单
+        :return:
+        '''
         #进入社区首页
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[3].click()
@@ -180,7 +190,7 @@ class aboutMomieWorld(unittest.TestCase):
         sleep(1)
 
         #下滑查看历史消息
-        self.driver.swipe(1100, 400, 1100, 1300, 1000)
+        self.driver.swipe(600, 360, 600, 1200, 1000)
 
         #返回
         close_conversation = self.driver.find_element_by_id("com.manboker.headportrait:id/e_ecommerce_close_conversation")
@@ -305,7 +315,7 @@ class aboutMomieWorld(unittest.TestCase):
 
     def testMessageCenter(self):
         '''
-        检查社区中消息的功能
+        检查社区中消息的功能， 查看和清空消息
         :return:
         '''
         # 进入社区首页
@@ -356,11 +366,11 @@ class aboutMomieWorld(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
+'''
 if __name__ == "__main__":
-
     suite = unittest.TestLoader().loadTestsFromTestCase(aboutMomieWorld)
     #    unittest.TextTestRunner(verbosity=2).run(suite)
+    AboutCommic.aboutComic()
     timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
     filename = "C:\Pycharm\ManBoker\\report.html"
     print (filename)
@@ -372,3 +382,4 @@ if __name__ == "__main__":
     )
     runner.run(suite)
     fp.close()
+'''

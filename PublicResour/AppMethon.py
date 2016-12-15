@@ -106,4 +106,33 @@ def TakePicturesTutorial(self):
     except:
         pass
 
-CreateDir('\Test')
+def ErrorShoot(self):
+
+    '''
+    错误截图， 遇到错误时截图到当前目录的Error文件夹
+    :param self:
+    :return:
+    '''
+    # 判断当前路径是否存在Error文件夹
+    PATH = lambda p: os.path.abspath(p)
+    path = PATH("%s/Error" % os.getcwd())
+    if not os.path.isdir(path):
+        os.makedirs(path)
+    # 截图
+    self.driver.get_screenshot_as_file(sys.path[0] + "/Error/" + time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime()) + '.jpg')
+
+def NormalShoot(self):
+
+    '''
+    正确截图， 关键点功能截图存放到当前目录的Normal中
+    :param self:
+    :return:
+    '''
+
+    # 判断当前路径是否存在Normal文件
+    PATH = lambda p: os.path.abspath(p)
+    path = PATH("%s/Normal" %os.getcwd())
+    if not os.path.isdir(path):
+        os.makedirs(path)
+    # 截图
+    self.driver.get_screenshot_as_file(sys.path[0] + "/Normal/" + time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime()) + '.jpg')

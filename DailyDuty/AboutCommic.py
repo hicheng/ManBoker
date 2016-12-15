@@ -2,11 +2,9 @@
 import os
 import unittest
 from time import sleep
-
-from appium import webdriver
 from selenium import webdriver
-
-from PublicResour import Desired_Capabilities, common
+from appium import webdriver
+from PublicResour import Desired_Capabilities, common, AppMethon
 
 #Return ads path relative to this file not cwd
 PATH = lambda p: os.path.abspath(
@@ -22,6 +20,10 @@ class aboutComic(unittest.TestCase):
         sleep(10)
 
     def testAMakeComic(self):
+        '''
+        判断今日漫画是否更新, 对更新的漫画进行收藏、点赞
+        :return:
+        '''
         # 彩蛋
         try:
             news_page_close = self.driver.find_element_by_id("com.manboker.headportrait:id/news_page_close")
@@ -32,40 +34,45 @@ class aboutComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-        common.exceptionStartHead(self)
+
+        # 判断进入漫画是否更新
         try:
             try:
                 refresh_comic = self.driver.find_element_by_name("刷新")
                 refresh_comic.click()
                 print u'-----今日漫画已刷新-----（PASS）'
+                AppMethon.NormalShoot(self)
                 sleep(8)
             except:
                 refresh1_comic = self.driver.find_element_by_name("领取")
                 refresh1_comic.click()
                 print u'-----今日漫画已刷新-----（PASS）'
+                AppMethon.NormalShoot(self)
                 sleep(8)
         except:
                 print u'今日没有检测出新图， 请检查设备（Fail）'
+                AppMethon.ErrorShoot(self)
                 pass
                 sleep(5)
 
-        common.exceptionStartHead(self)
 
-        #向右滑动显示明日刷新时间
+        # 向右滑动显示明日刷新时间
         self.driver.swipe(300,900,1000,900,3000)
         try:
+            AppMethon.NormalShoot(self)
             self.driver.find_element_by_name("00:00:00")
             print u'明日更新的时间为00:00:00'
         except:
             print u'-----精彩魔图 即将更新-----（PASS）'
             pass
         sleep(5)
-        common.exceptionStartHead(self)
 
-        #向左滑动显示更新的第二张图片
+
+        # 向左滑动显示更新的第二张图片
         self.driver.swipe(1150,900,500,900,1000)
-        #又下角可能会出现魔豆icon
+        # 又下角可能会出现魔豆icon
         sleep(3)
+        AppMethon.NormalShoot(self)
         try:
             modouicon = self.driver.find_element_by_name('美妆可以让你的角色更好看~')
             modouicon.click()
@@ -73,16 +80,13 @@ class aboutComic(unittest.TestCase):
             pass
         sleep(5)
 
-        common.exceptionStartHead(self)
-
-        sleep(1)
-
         #收藏漫画
         favorite_comic = self.driver.find_element_by_id("com.manboker.headportrait:id/comic_praise_iv")
         if (favorite_comic.is_selected() == True):
             pass
         else:
             favorite_comic.click()
+            AppMethon.NormalShoot(self)
         print u'-----漫画已收藏-----（PASS）'
         sleep(2)
 
@@ -91,7 +95,6 @@ class aboutComic(unittest.TestCase):
         back_makecomic.click()
         print u'-----漫画更新相关功能检查完成-----（PASS）'
         sleep(5)
-
 
 
     def testBackGroundAndSaveShare(self):
@@ -103,8 +106,6 @@ class aboutComic(unittest.TestCase):
         enter_makecomic[0].click()
         sleep(8)
 
-        AppException.exceptionStartHead(self)
-
         enter_click = self.driver.find_element_by_name("创作")
         enter_click.click()
         sleep(3)
@@ -114,6 +115,7 @@ class aboutComic(unittest.TestCase):
         sleep(2)
         background = self.driver.find_element_by_name("拍背景")
         background.click()
+        AppMethon.NormalShoot(self)
         sleep(5)
         back_background = self.driver.find_element_by_id("com.manboker.headportrait:id/change_bg_back_iv")
         back_background.click()
@@ -131,13 +133,14 @@ class aboutComic(unittest.TestCase):
         sleep(2)
         set_goback.click()
         sleep(3)
-        AppException.exceptionStartHead(self)
+
         '''
             # 向左滑动显示第一张更新的漫画
             self.driver.swipe(300, 900, 1000, 900, 3000)
 
             AppMethon.DefineMethon().methonBackGroundAndSaveShare()
         '''
+
         # 从做漫画返回到首页
         back_makecomic = self.driver.find_element_by_id(
             "com.manboker.headportrait:id/comics_main_top_view_to_entry_iv")
@@ -218,7 +221,7 @@ class aboutComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-        common.exceptionStartHead(self)
+
         #进入魔豆商城
         beanmall = self.driver.find_element_by_id("com.manboker.headportrait:id/bean")
         beanmall.click()
@@ -244,7 +247,7 @@ class aboutComic(unittest.TestCase):
         purchased = self.driver.find_element_by_name("已购图")
         purchased.click()
         sleep(8)
-        common.exceptionStartHead(self)
+
 
         # 从做已购图分类返回到首页
         back_makecomic = self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_top_view_to_entry_iv")
@@ -259,7 +262,7 @@ class aboutComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-        common.exceptionStartHead(self)
+
 
         #进入美妆
         enter_faceedit = self.driver.find_element_by_name("美妆")
@@ -283,7 +286,7 @@ class aboutComic(unittest.TestCase):
         button = self.driver.find_element_by_name("保存")
         button.click()
         sleep(3)
-        common.exceptionStartHead(self)
+
 
         # 从做漫画返回到首页
         back_makecomic = self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_top_view_to_entry_iv")
@@ -299,7 +302,7 @@ class aboutComic(unittest.TestCase):
         enter_makecomic = self.driver.find_elements_by_class_name("android.view.View")
         enter_makecomic[0].click()
         sleep(8)
-        common.exceptionStartHead(self)
+
 
         # 进入搜索漫画界面
         click_search = self.driver.find_element_by_id(
@@ -310,7 +313,7 @@ class aboutComic(unittest.TestCase):
         search_comic = self.driver.find_element_by_name("搜索")
         search_comic.click()
         sleep(8)
-        common.exceptionStartHead(self)
+
         # 从做漫画返回到首页
 
         back_makecomic = self.driver.find_element_by_id(     "com.manboker.headportrait:id/comics_main_top_view_to_entry_iv")
@@ -320,7 +323,8 @@ class aboutComic(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
+'''
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(aboutComic)
     unittest.TextTestRunner(verbosity=2).run(suite)
+'''

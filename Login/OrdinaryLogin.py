@@ -4,7 +4,6 @@ import time
 import os
 import unittest
 
-
 #未登录账号时, 通过登录界面登录
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)

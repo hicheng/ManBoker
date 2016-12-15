@@ -41,9 +41,9 @@ class Email:
         # 发送协议
         try:
             # QQ应该用SMTP_SSL加密协议
-            smtp = smtplib.SMTP_SSL("smtp.qq.com", 465)
-            smtp.ehlo()
-            smtp.ehlo()
+            smtp = smtplib.SMTP_SSL("mail.rps.com", 465)
+#            smtp = smtplib.SMTP_SSL("smtp.qq.com", 465)
+
             smtp.login(server.get('user'), server.get('passwd'))
             smtp.sendmail(fro, to, msg.as_string())
             smtp.close()
@@ -55,15 +55,13 @@ class Email:
         print("Begin to send email !")
         # 尝试发送邮件， passwd是qq开通SMTP_SSL的权限码
         try:
-
-            server = {'name': 'mail.qq.com', 'port': 465, 'user': '3434633002@qq.com', 'passwd': 'cqwrawjfhiyrcigg',}
-            fro = "3434633002@qq.com"
-            cc = ["960292235@qq.com"]
-            to = ["960292235@qq.com"]
+            server = {'name': 'mail.rps.com', 'port': 465, 'user': 'ccheng@rps.com', 'passwd': 'ccheng12345',}
+#            server = {'name': 'mail.qq.com', 'port': 465, 'user': '3434633002@qq.com', 'passwd': 'cqwrawjfhiyrcigg',}
+            fro = "ccheng@rps.com"
+            cc = "ccheng@rps.com"
+            to = ["ccheng@rps.com"]
             subject = "ManBoker每日检查报告"
-
             self.sendHtmlEamil(server, fro, to, cc, subject, attachfile)
-
         except:
             print "发送报告失败"
 
