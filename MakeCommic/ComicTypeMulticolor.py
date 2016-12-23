@@ -40,7 +40,7 @@ class CreateComic(unittest.TestCase):
 
 
         #此处修改分类
-        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("徐然2")).click()
+        WebDriverWait(self.driver, 20).until(lambda x: x.find_element_by_name("成晨")).click()
 
         try:
             #此处修改循环查看图的次数

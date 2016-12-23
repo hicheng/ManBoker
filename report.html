@@ -150,9 +150,9 @@ function showOutput(id, name) {
 <div class="container">
     <div class='heading'>
 <h1>Test</h1>
-<p><strong>Start Time:</strong> 2016-12-14 13:33:40</p>
-<p><strong>Duration:</strong> 0:12:26.803000</p>
-<p><strong>Status:</strong> <span class="text text-success">Pass <strong>8</strong></span> <span class="text text-warning">Error <strong>2</strong></span></p>
+<p><strong>Start Time:</strong> 2016-12-16 11:01:19</p>
+<p><strong>Duration:</strong> 0:11:34.680000</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>6</strong></span> <span class="text text-warning">Error <strong>5</strong></span></p>
 
 <p class='description'>Daily Update Check</p>
 </div>
@@ -180,9 +180,9 @@ function showOutput(id, name) {
 <tr class='text text-warning'>
     <td>DailyDuty.AboutCommic.aboutComic</td>
     <td>6</td>
-    <td>5</td>
+    <td>3</td>
     <td>0</td>
-    <td>1</td>
+    <td>3</td>
     <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',6)">Detail</a></td>
 </tr>
 
@@ -202,7 +202,7 @@ function showOutput(id, name) {
         <pre>
         
 pt1.1: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
@@ -215,28 +215,40 @@ pt1.1: 设备配置成功
     </td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
-    <td class='text text-success'><div class='testcase'>testBackGroundAndSaveShare</div></td>
+<tr id='ft1.2' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>testBackGroundAndSaveShare</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
-        pass</a>
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        error</a>
 
-    <div id='div_pt1.2' class="popup_window">
+    <div id='div_ft1.2' class="popup_window">
         <div style='text-align: right;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.2: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+ft1.2: 设备配置成功
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
+Traceback (most recent call last):
+  File "C:\Pycharm\ManBoker\DailyDuty\AboutCommic.py", line 128, in testBackGroundAndSaveShare
+    save_goback = self.driver.find_element_by_id("com.manboker.headportrait:id/comic_save_goback")
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 269, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
+    'value': value})['value']
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
 
 
         </pre>
@@ -262,12 +274,11 @@ pt1.2: 设备配置成功
         <pre>
         
 pt1.3: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 
@@ -279,32 +290,43 @@ pt1.3: 设备配置成功
     </td>
 </tr>
 
-<tr id='pt1.4' class='hiddenRow'>
-    <td class='text text-success'><div class='testcase'>testComicInfoPage</div></td>
+<tr id='ft1.4' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>testComicInfoPage</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
-        pass</a>
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        error</a>
 
-    <div id='div_pt1.4' class="popup_window">
+    <div id='div_ft1.4' class="popup_window">
         <div style='text-align: right;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.4: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+ft1.4: 设备配置成功
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
+Traceback (most recent call last):
+  File "C:\Pycharm\ManBoker\DailyDuty\AboutCommic.py", line 177, in testComicInfoPage
+    add_tag = self.driver.find_element_by_id("com.manboker.headportrait:id/add_tag_et")
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 269, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
+    'value': value})['value']
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
 
 
         </pre>
@@ -330,21 +352,18 @@ pt1.4: 设备配置成功
         <pre>
         
 ft1.5: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 Traceback (most recent call last):
-  File "C:\Pycharm\ManBoker\DailyDuty\AboutCommic.py", line 253, in testMomicMall
-    back_makecomic = self.driver.find_element_by_id("com.manboker.headportrait:id/comics_main_top_view_to_entry_iv")
+  File "C:\Pycharm\ManBoker\DailyDuty\AboutCommic.py", line 244, in testMomicMall
+    set_goback = self.driver.find_element_by_id("com.manboker.headportrait:id/set_go_back")
   File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 269, in find_element_by_id
     return self.find_element(by=By.ID, value=id_)
   File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
@@ -380,18 +399,15 @@ NoSuchElementException: Message: An element could not be located on the page usi
         <pre>
         
 pt1.6: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 设备配置成功
 -----漫画搜索检查完成-----（PASS）
 
@@ -428,18 +444,15 @@ pt1.6: 设备配置成功
         <pre>
         
 pt2.1: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 设备配置成功
 -----漫画搜索检查完成-----（PASS）
 设备配置成功
@@ -469,18 +482,15 @@ pt2.1: 设备配置成功
         <pre>
         
 pt2.2: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 设备配置成功
 -----漫画搜索检查完成-----（PASS）
 设备配置成功
@@ -514,18 +524,15 @@ pt2.2: 设备配置成功
         <pre>
         
 pt2.3: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 设备配置成功
 -----漫画搜索检查完成-----（PASS）
 设备配置成功
@@ -561,18 +568,15 @@ pt2.3: 设备配置成功
         <pre>
         
 ft2.4: 设备配置成功
-今日没有检测出新图， 请检查设备（Fail）
+-----今日漫画已刷新-----（PASS）
 -----精彩魔图 即将更新-----（PASS）
 -----漫画已收藏-----（PASS）
 -----漫画更新相关功能检查完成-----（PASS）
 设备配置成功
------拍背景和保存分享检查完成-----（PASS）
 设备配置成功
 -----美妆改肤色检查完成-----（PASS）
 设备配置成功
------漫画信息页检查完成-----（PASS）
 设备配置成功
-魔豆数量不足
 设备配置成功
 -----漫画搜索检查完成-----（PASS）
 设备配置成功
@@ -606,14 +610,82 @@ NoSuchElementException: Message: An element could not be located on the page usi
     </td>
 </tr>
 
+<tr class='text text-warning'>
+    <td>DailyRatings.DailyScore.dailyScore</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>testScore</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        error</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: 设备配置成功
+-----今日漫画已刷新-----（PASS）
+-----精彩魔图 即将更新-----（PASS）
+-----漫画已收藏-----（PASS）
+-----漫画更新相关功能检查完成-----（PASS）
+设备配置成功
+设备配置成功
+-----美妆改肤色检查完成-----（PASS）
+设备配置成功
+设备配置成功
+设备配置成功
+-----漫画搜索检查完成-----（PASS）
+设备配置成功
+-----用户空间检查完成-----（PASS）
+设备配置成功
+发表漫画赠送两魔豆
+点赞漫画赠送两魔豆
+-----社区活动相关功能检查完成-----（PASS）
+设备配置成功
+-----社区系统消息检查完成-----（PASS）
+设备配置成功
+设备配置成功
+Traceback (most recent call last):
+  File "C:\Pycharm\ManBoker\DailyRatings\DailyScore.py", line 45, in testScore
+    "//android.view.View[@content-desc=\"é­æ¼«è¯å®¡å\"]/android.view.View[9]/android.widget.Image[1]").click()
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 293, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
+    'value': value})['value']
+  File "D:\Python27\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
     </tbody>
     <tfoot>
         <tr id='total_row'>
             <td>Total</td>
-            <td>10</td>
-            <td class="text text-success">8</td>
+            <td>11</td>
+            <td class="text text-success">6</td>
             <td class="text text-danger">0</td>
-            <td class="text text-warning">2</td>
+            <td class="text text-warning">5</td>
             <td>&nbsp;</td>
         </tr>
     </tfoot>
